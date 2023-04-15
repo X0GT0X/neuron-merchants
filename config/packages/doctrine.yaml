@@ -1,7 +1,9 @@
 doctrine:
     dbal:
         url: '%env(resolve:DATABASE_URL)%'
-        types: ~
+        types:
+            merchant_id: App\Infrastructure\Configuration\Doctrine\Type\MerchantIdType
+            country: App\Infrastructure\Configuration\Doctrine\Type\CountryType
     orm:
         auto_generate_proxy_classes: true
         enable_lazy_ghost_objects: true
