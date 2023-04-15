@@ -1,13 +1,7 @@
 doctrine:
     dbal:
         url: '%env(resolve:DATABASE_URL)%'
-        types:
-            payer_id: App\Infrastructure\Configuration\Doctrine\Type\PayerIdType
-            payment_id: App\Infrastructure\Configuration\Doctrine\Type\PaymentIdType
-            bank_id: App\Infrastructure\Configuration\Doctrine\Type\BankIdType
-            currency: App\Infrastructure\Configuration\Doctrine\Type\CurrencyType
-            payment_type: App\Infrastructure\Configuration\Doctrine\Type\PaymentTypeType
-            payment_status: App\Infrastructure\Configuration\Doctrine\Type\PaymentStatusType
+        types: ~
     orm:
         auto_generate_proxy_classes: true
         enable_lazy_ghost_objects: true

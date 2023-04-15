@@ -83,3 +83,6 @@ test-unit-coverage: ## Works only if application was started with XDEBUG_MODE=co
 
 test-unit-coverage-report: ## Works only if application was started with XDEBUG_MODE=coverage env variable (see make up-with-coverage)
 	$(PHP_CONT) bin/phpunit --coverage-html tests/.coverage
+
+ssl-certs:
+	mkcert -cert-file docker/proxy/certs/local-cert.pem -key-file docker/proxy/certs/local-key.pem "neuron.localhost" "*.neuron.localhost" "neuron.local" "*.neuron.local"
