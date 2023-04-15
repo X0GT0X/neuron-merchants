@@ -1,0 +1,48 @@
+doctrine:
+    dbal:
+        url: '%env(resolve:DATABASE_URL)%'
+        types:
+            payer_id: App\Infrastructure\Configuration\Doctrine\Type\PayerIdType
+            payment_id: App\Infrastructure\Configuration\Doctrine\Type\PaymentIdType
+            bank_id: App\Infrastructure\Configuration\Doctrine\Type\BankIdType
+            currency: App\Infrastructure\Configuration\Doctrine\Type\CurrencyType
+            payment_type: App\Infrastructure\Configuration\Doctrine\Type\PaymentTypeType
+            payment_status: App\Infrastructure\Configuration\Doctrine\Type\PaymentStatusType
+    orm:
+        auto_generate_proxy_classes: true
+        enable_lazy_ghost_objects: true
+        naming_strategy: doctrine.orm.naming_strategy.underscore_number_aware
+        auto_mapping: true
+        mappings:
+            App:
+                is_bundle: false
+                type: xml
+                dir: '%kernel.project_dir%/src/Infrastructure/Configuration/Doctrine'
+                prefix: 'App\Domain'
+                alias: App
+
+when@test:
+    doctrine:
+        dbal:
+            # "TEST_TOKEN" is typically set by ParaTest
+            dbname_suffix: '_test%env(default::TEST_TOKEN)%'
+
+when@prod:
+    doctrine:
+        orm:
+            auto_generate_proxy_classes: false
+            proxy_dir: '%kernel.build_dir%/doctrine/orm/Proxies'
+            query_cache_driver:
+                type: pool
+                pool: doctrine.system_cache_pool
+            result_cache_driver:
+                type: pool
+                pool: doctrine.result_cache_pool
+
+    framework:
+        cache:
+            pools:
+                doctrine.result_cache_pool:
+                    adapter: cache.app
+                doctrine.system_cache_pool:
+                    adapter: cache.system

@@ -1,0 +1,17 @@
+includes:
+    - phpstan-baseline.neon
+
+parameters:
+    level: 8
+    checkUninitializedProperties: true
+    checkGenericClassInNonGenericObjectType: false
+    paths:
+        - src
+        - tests
+    excludePaths:
+        - src/Infrastructure/Migration/*
+    ignoreErrors:
+        -
+            message: '#^Property [a-zA-Z0-9\\_]+::\$[a-zA-Z\_]+ is never read, only written.$#'
+        -
+            message: "#^Parameter \\#1 \\$objectOrClass of class ReflectionClass constructor expects class\\-string\\<T of object\\>\\|T of object, string given\\.$#"
