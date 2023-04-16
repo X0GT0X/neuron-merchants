@@ -18,7 +18,7 @@ readonly class Connection implements ConnectionInterface
         $this->connection = $entityManager->getConnection();
     }
 
-    public function fetchOne(string $sql, array $parameters, string $dtoClass)
+    public function fetchOne(string $sql, string $dtoClass, array $parameters = [])
     {
         try {
             $statement = $this->connection->prepare($sql);
@@ -34,19 +34,16 @@ readonly class Connection implements ConnectionInterface
         }
     }
 
-    public function fetchAll(string $sql, array $parameters, string $dtoClass): array
+    public function fetchAll(string $sql, string $dtoClass, array $parameters = []): array
     {
         try {
             $statement = $this->connection->prepare($sql);
             $result = $statement->executeQuery($parameters)->fetchAllAssociative();
 
-            $dtos = [];
-
-            foreach ($result as $singleResult) {
-                $dtos[] = $this->transformSQLResultToDTO($singleResult, $dtoClass);
-            }
-
-            return $dtos;
+            return \array_map(
+                fn ($singleResult) => $this->transformSQLResultToDTO($singleResult, $dtoClass),
+                $result
+            );
         } catch (\ReflectionException $exception) {
             throw new DTOTransformingException(\sprintf('Unable to transform SQL result to \'%s\'. Reason: %s', $dtoClass, $exception->getMessage()), previous: $exception);
         }

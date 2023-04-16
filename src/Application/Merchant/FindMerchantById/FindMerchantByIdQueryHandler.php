@@ -33,6 +33,6 @@ class FindMerchantByIdQueryHandler extends AbstractCommand
             WHERE m.id = :id
         ';
 
-        return $this->connection->fetchOne($sql, ['id' => $query->merchantId], MerchantDTO::class);
+        return $this->connection->fetchOne($sql, MerchantDTO::class, ['id' => $query->merchantId]);
     }
 }

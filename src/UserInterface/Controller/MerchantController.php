@@ -7,6 +7,7 @@ namespace App\UserInterface\Controller;
 use App\Application\Contract\MerchantsModuleInterface;
 use App\Application\Merchant\AddMerchant\AddMerchantCommand;
 use App\Application\Merchant\FindMerchantById\FindMerchantByIdQuery;
+use App\Application\Merchant\GetAllMerchants\GetAllMerchantsQuery;
 use App\Domain\Country;
 use App\UserInterface\Request\AddMerchantRequest;
 use Symfony\Component\HttpFoundation\JsonResponse;
@@ -36,6 +37,14 @@ final readonly class MerchantController
         return new JsonResponse([
             'merchantId' => $merchantId,
         ], Response::HTTP_CREATED);
+    }
+
+    #[Route('/merchants', methods: ['GET'])]
+    public function getAll(): JsonResponse
+    {
+        $merchants = $this->merchantsModule->executeCQuery(new GetAllMerchantsQuery());
+
+        return new JsonResponse($this->serializer->serialize($merchants, 'json'), json: true);
     }
 
     #[Route('/merchants/{merchantId}', methods: ['GET'])]

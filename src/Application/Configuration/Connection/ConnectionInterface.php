@@ -19,7 +19,7 @@ interface ConnectionInterface
      *
      * @return T
      */
-    public function fetchOne(string $sql, array $parameters, string $dtoClass);
+    public function fetchOne(string $sql, string $dtoClass, array $parameters = []);
 
     /**
      * @template T
@@ -31,5 +31,5 @@ interface ConnectionInterface
      *
      * @return array<T>
      */
-    public function fetchAll(string $sql, array $parameters, string $dtoClass): array;
+    public function fetchAll(string $sql, string $dtoClass, array $parameters = []): array;
 }
