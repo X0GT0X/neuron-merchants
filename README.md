@@ -7,7 +7,7 @@
 ## Getting Started
 1. Run `make build` to build fresh images
 2. Run `make up` (the logs will be displayed in the current shell)
-3. This application is now available at `https://merchants.localhost`.
+3. This application is now available at `https://merchants.localhost:4443`.
 4. Run `make down` to stop the Docker containers.
 
 ## Docs
