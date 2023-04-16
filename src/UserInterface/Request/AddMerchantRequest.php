@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\UserInterface\Request;
 
 use App\Domain\Country;

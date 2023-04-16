@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\IntegrationEvent;
 
 use App\BuildingBlocks\Infrastructure\Event\IntegrationEvent;
@@ -15,6 +17,9 @@ readonly class MerchantCreatedIntegrationEvent extends IntegrationEvent
         parent::__construct($id, $occurredOn);
     }
 
+    /**
+     * @return array<string, mixed>
+     */
     public function __serialize(): array
     {
         return [

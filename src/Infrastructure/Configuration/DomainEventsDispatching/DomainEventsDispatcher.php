@@ -32,6 +32,7 @@ final readonly class DomainEventsDispatcher implements DomainEventsDispatcherInt
         foreach ($domainEvents as $domainEvent) {
             try {
                 $domainEventNotification = $this->notificationsResolver->getNotificationTypeByDomainEvent($domainEvent);
+                /** @var DomainEventNotificationInterface $domainEventNotification */
                 $domainEventNotifications[] = new $domainEventNotification($domainEvent->getId(), $domainEvent);
             } catch (DomainEventNotificationNotFoundException) {
                 continue;
