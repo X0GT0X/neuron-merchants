@@ -11,8 +11,8 @@ interface ConnectionInterface
     /**
      * @template T
      *
-     * @param array<string, mixed> $parameters
      * @param class-string<T>      $dtoClass
+     * @param array<string, mixed> $parameters
      *
      * @throws DTOTransformingException|Exception
      * @throws NotFoundException
@@ -24,8 +24,8 @@ interface ConnectionInterface
     /**
      * @template T
      *
-     * @param array<string, mixed> $parameters
      * @param class-string<T>      $dtoClass
+     * @param array<string, mixed> $parameters
      *
      * @throws DTOTransformingException|Exception
      *
