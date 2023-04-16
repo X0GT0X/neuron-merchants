@@ -20,10 +20,10 @@ final readonly class MerchantController
     public function add(AddMerchantRequest $request): JsonResponse
     {
         $merchantId = $this->merchantsModule->executeCommand(new AddMerchantCommand(
-            $request->name,
-            Country::from($request->country),
-            $request->registrationNumber,
-            $request->taxNumber
+            (string) $request->name,
+            Country::from((string) $request->country),
+            (string) $request->registrationNumber,
+            (string) $request->taxNumber
         ));
 
         return new JsonResponse([

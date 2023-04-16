@@ -9,17 +9,24 @@ framework:
             query.bus: ~
             event.bus:
                 default_middleware: allow_no_handlers
+            outbox.bus: ~
 
         transports:
             # https://symfony.com/doc/current/messenger.html#transport-configuration
             # async: '%env(MESSENGER_TRANSPORT_DSN)%'
             # failed: 'doctrine://default?queue_name=failed'
             sync: 'sync://'
+            outbox:
+                dsn: '%env(OUTBOX_TRANSPORT_DSN)%'
+                options:
+                    table_name: outbox_messages
+                    auto_setup: false
 
         routing:
-            'App\BuildingBlocks\Domain\DomainEventInterface': sync
-            '\App\Application\Contract\CommandInterface': sync
-            '\App\Application\Contract\QueryInterface': sync
+            App\BuildingBlocks\Domain\DomainEventInterface: sync
+            App\Application\Contract\CommandInterface: sync
+            App\Application\Contract\QueryInterface: sync
+            App\BuildingBlocks\Application\Event\DomainEventNotificationInterface: outbox
 
 # when@test:
 #    framework:

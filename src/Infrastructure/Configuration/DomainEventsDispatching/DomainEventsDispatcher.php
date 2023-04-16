@@ -16,7 +16,7 @@ final readonly class DomainEventsDispatcher implements DomainEventsDispatcherInt
 {
     public function __construct(
         private MessageBusInterface $eventBus,
-        //        private OutboxInterface $outbox,
+        private OutboxInterface $outbox,
         private DomainEventsAccessorInterface $domainEventsAccessor,
         private DomainEventNotificationsResolverInterface $notificationsResolver,
     ) {
@@ -42,6 +42,10 @@ final readonly class DomainEventsDispatcher implements DomainEventsDispatcherInt
 
         foreach ($domainEvents as $domainEvent) {
             $this->eventBus->dispatch($domainEvent);
+        }
+
+        foreach ($domainEventNotifications as $domainEventNotification) {
+            $this->outbox->add($domainEventNotification);
         }
     }
 }
