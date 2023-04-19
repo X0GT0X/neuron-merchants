@@ -13,8 +13,8 @@ framework:
 
         transports:
             # https://symfony.com/doc/current/messenger.html#transport-configuration
-            # async: '%env(MESSENGER_TRANSPORT_DSN)%'
             # failed: 'doctrine://default?queue_name=failed'
+            async: '%env(ASYNC_MESSENGER_TRANSPORT_DSN)%'
             sync: 'sync://'
             outbox:
                 dsn: '%env(OUTBOX_TRANSPORT_DSN)%'
@@ -27,6 +27,7 @@ framework:
             App\Application\Contract\CommandInterface: sync
             App\Application\Contract\QueryInterface: sync
             App\BuildingBlocks\Application\Event\DomainEventNotificationInterface: outbox
+            App\BuildingBlocks\IntegrationEvent\IntegrationEvent: async
 
 # when@test:
 #    framework:
