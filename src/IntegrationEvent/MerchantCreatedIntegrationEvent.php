@@ -4,10 +4,11 @@ declare(strict_types=1);
 
 namespace App\IntegrationEvent;
 
-use App\BuildingBlocks\IntegrationEvent\IntegrationEvent;
+use Neuron\BuildingBlocks\Integration\IntegrationEvent;
+use Neuron\BuildingBlocks\Integration\SentIntegrationEventInterface;
 use Symfony\Component\Uid\Uuid;
 
-readonly class MerchantCreatedIntegrationEvent extends IntegrationEvent
+readonly class MerchantCreatedIntegrationEvent extends IntegrationEvent implements SentIntegrationEventInterface
 {
     public const EVENT_TYPE = 'MerchantCreated';
 
@@ -24,6 +25,11 @@ readonly class MerchantCreatedIntegrationEvent extends IntegrationEvent
         return [
             'merchantId' => $this->merchantId,
         ];
+    }
+
+    public static function from(Uuid $id, \DateTimeImmutable $occurredOn, array $data): IntegrationEvent
+    {
+        return new self($id, $occurredOn, Uuid::fromString($data['merchantId']));
     }
 
     public static function getEventType(): string

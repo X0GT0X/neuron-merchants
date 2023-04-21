@@ -17,6 +17,6 @@ final readonly class Outbox implements OutboxInterface
 
     public function add(DomainEventNotificationInterface $notification): void
     {
-        $this->outboxBus->dispatch($notification, [new DelayStamp(2000)]);
+        $this->outboxBus->dispatch($notification);
     }
 }
