@@ -21,6 +21,6 @@ parameters:
 			path: src/Infrastructure/Configuration/Decorator/ValidationCommandHandlerDecorator.php
 
 		-
-			message: "#^Method App\\\\Infrastructure\\\\Configuration\\\\Doctrine\\\\Type\\\\AbstractIdType\\:\\:convertToPHPValue\\(\\) should return Neuron\\\\BuildingBlocks\\\\Domain\\\\BaseId but returns object\\.$#"
+			message: "#^Method App\\\\Infrastructure\\\\Configuration\\\\Doctrine\\\\Type\\\\AbstractIdType\\:\\:convertToPHPValue\\(\\) should return Neuron\\\\BuildingBlocks\\\\Domain\\\\BaseId\\|null but returns object\\|null\\.$#"
 			count: 1
 			path: src/Infrastructure/Configuration/Doctrine/Type/AbstractIdType.php

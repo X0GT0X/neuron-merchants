@@ -14,18 +14,18 @@ abstract class AbstractIdType extends GuidType
     abstract public static function getIdClass(): string;
 
     /**
-     * @param BaseId $value
+     * @param ?BaseId $value
      */
-    public function convertToDatabaseValue($value, AbstractPlatform $platform): Uuid
+    public function convertToDatabaseValue($value, AbstractPlatform $platform): ?Uuid
     {
-        return $value->getValue();
+        return $value?->getValue();
     }
 
     /**
-     * @param string $value
+     * @param ?string $value
      */
-    public function convertToPHPValue($value, AbstractPlatform $platform): BaseId
+    public function convertToPHPValue($value, AbstractPlatform $platform): ?BaseId
     {
-        return new ($this::getIdClass())(Uuid::fromString($value));
+        return $value !== null ? new ($this::getIdClass())((string) Uuid::fromString($value)) : null;
     }
 }
