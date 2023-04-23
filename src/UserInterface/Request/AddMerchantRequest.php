@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\UserInterface\Request;
 
 use App\Domain\Country;
+use Neuron\BuildingBlocks\UserInterface\Request\RequestInterface;
 use Symfony\Component\Validator\Constraints as Assert;
 
 readonly class AddMerchantRequest implements RequestInterface
