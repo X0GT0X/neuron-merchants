@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace App\Infrastructure\Configuration\Outbox;
 
-use App\BuildingBlocks\Application\Event\DomainEventNotificationInterface;
+use Neuron\BuildingBlocks\Infrastructure\Outbox\OutboxInterface;
+use Neuron\BuildingBlocks\Infrastructure\Outbox\OutboxMessage;
 use Symfony\Component\Messenger\MessageBusInterface;
-use Symfony\Component\Messenger\Stamp\DelayStamp;
 
 final readonly class Outbox implements OutboxInterface
 {
@@ -15,8 +15,8 @@ final readonly class Outbox implements OutboxInterface
     ) {
     }
 
-    public function add(DomainEventNotificationInterface $notification): void
+    public function add(OutboxMessage $message): void
     {
-        $this->outboxBus->dispatch($notification);
+        $this->outboxBus->dispatch($message);
     }
 }

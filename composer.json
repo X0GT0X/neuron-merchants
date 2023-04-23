@@ -13,7 +13,7 @@
         "doctrine/doctrine-bundle": "^2.9",
         "doctrine/doctrine-migrations-bundle": "^3.2",
         "doctrine/orm": "^2.14",
-        "neuron/building-blocks": "^0.0.13",
+        "neuron/building-blocks": "^1.0.0",
         "phpdocumentor/reflection-docblock": "^5.3",
         "phpstan/phpdoc-parser": "^1.18",
         "sensio/framework-extra-bundle": "^6.2",

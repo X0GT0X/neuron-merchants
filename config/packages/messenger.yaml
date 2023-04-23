@@ -36,10 +36,11 @@ framework:
                     auto_setup: false
 
         routing:
-            App\BuildingBlocks\Domain\DomainEventInterface: sync
+            Neuron\BuildingBlocks\Domain\DomainEventInterface: sync
             App\Application\Contract\CommandInterface: sync
             App\Application\Contract\QueryInterface: sync
-            App\BuildingBlocks\Application\Event\DomainEventNotificationInterface: outbox
+            Neuron\BuildingBlocks\Application\Event\DomainEventNotificationInterface: sync
+            Neuron\BuildingBlocks\Infrastructure\Outbox\OutboxMessage: outbox
             Neuron\BuildingBlocks\Integration\SentIntegrationEventInterface: async
 
 # when@test:

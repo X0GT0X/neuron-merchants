@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace App\Domain\Merchant\Rule;
 
-use App\BuildingBlocks\Domain\AbstractBusinessRule;
 use App\Domain\Merchant\MerchantCounterInterface;
+use Neuron\BuildingBlocks\Domain\AbstractBusinessRule;
 
 class TaxNumberShouldBeUniqueRule extends AbstractBusinessRule
 {

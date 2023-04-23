@@ -4,12 +4,12 @@ declare(strict_types=1);
 
 namespace App\Domain\Merchant;
 
-use App\BuildingBlocks\Domain\AggregateRootInterface;
-use App\BuildingBlocks\Domain\Entity;
 use App\Domain\Country;
 use App\Domain\Merchant\Event\MerchantCreatedDomainEvent;
 use App\Domain\Merchant\Rule\RegistrationNumberShouldBeUniqueRule;
 use App\Domain\Merchant\Rule\TaxNumberShouldBeUniqueRule;
+use Neuron\BuildingBlocks\Domain\AggregateRootInterface;
+use Neuron\BuildingBlocks\Domain\Entity;
 use Symfony\Component\Uid\Uuid;
 
 class Merchant extends Entity implements AggregateRootInterface
@@ -37,7 +37,7 @@ class Merchant extends Entity implements AggregateRootInterface
             new TaxNumberShouldBeUniqueRule($taxNumber, $merchantCounter),
         );
 
-        $this->id = new MerchantId(Uuid::v4());
+        $this->id = new MerchantId((string) Uuid::v4());
         $this->name = $name;
         $this->country = $country;
         $this->registrationNumber = $registrationNumber;
