@@ -22,6 +22,9 @@ framework:
                         name: integration_events
                         type: topic
                     queues:
+                        merchants:
+                            binding_keys:
+                                - merchants
                         notifications:
                             binding_keys:
                                 - notifications
@@ -34,6 +37,11 @@ framework:
                 options:
                     table_name: outbox_messages
                     auto_setup: false
+            inbox:
+                dsn: '%env(INBOX_TRANSPORT_DSN)%'
+                options:
+                    table_name: inbox_messages
+                    auto_setup: false
 
         routing:
             Neuron\BuildingBlocks\Domain\DomainEventInterface: sync
@@ -41,7 +49,9 @@ framework:
             App\Application\Contract\QueryInterface: sync
             Neuron\BuildingBlocks\Application\Event\DomainEventNotificationInterface: sync
             Neuron\BuildingBlocks\Infrastructure\Outbox\OutboxMessage: outbox
+            Neuron\BuildingBlocks\Infrastructure\Inbox\InboxMessage: inbox
             Neuron\BuildingBlocks\Integration\SentIntegrationEventInterface: async
+            Neuron\BuildingBlocks\Integration\ReceivedIntegrationEventInterface: sync
 
 # when@test:
 #    framework:

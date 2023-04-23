@@ -71,6 +71,12 @@ migrations-migrate:
 outbox-worker-start:
 	@$(SYMFONY) messenger:consume outbox -vv
 
+inbox-worker-start:
+	@$(SYMFONY) messenger:consume inbox -vv
+
+integration-events-worker-start:
+	@$(SYMFONY) messenger:consume async --queues=merchants
+
 ## —— Tools 🚀 ——————————————————————————————————————————————————————————————
 cs-fix:
 	$(PHP_CONT) vendor/bin/php-cs-fixer fix -v --allow-risky=yes
