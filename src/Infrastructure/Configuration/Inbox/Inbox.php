@@ -8,7 +8,7 @@ use Neuron\BuildingBlocks\Infrastructure\Inbox\InboxInterface;
 use Neuron\BuildingBlocks\Infrastructure\Inbox\InboxMessage;
 use Symfony\Component\Messenger\MessageBusInterface;
 
-class Inbox implements InboxInterface
+final readonly class Inbox implements InboxInterface
 {
     public function __construct(
         private MessageBusInterface $inboxBus

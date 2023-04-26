@@ -26,6 +26,6 @@ abstract class AbstractIdType extends GuidType
      */
     public function convertToPHPValue($value, AbstractPlatform $platform): ?BaseId
     {
-        return $value !== null ? new ($this::getIdClass())((string) Uuid::fromString($value)) : null;
+        return null !== $value ? new ($this::getIdClass())((string) Uuid::fromString($value)) : null;
     }
 }
