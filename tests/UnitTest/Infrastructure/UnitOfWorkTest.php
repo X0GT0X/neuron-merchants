@@ -11,7 +11,7 @@ use PHPUnit\Framework\TestCase;
 
 class UnitOfWorkTest extends TestCase
 {
-    public function testThat_DispatchesDomainEvents_AndFlushesEntities(): void
+    public function testThatDispatchesDomainEventsAndFlushesEntities(): void
     {
         $entityManager = $this->createMock(EntityManagerInterface::class);
         $entityManager->expects($this->once())

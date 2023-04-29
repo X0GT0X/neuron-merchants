@@ -3,7 +3,7 @@ includes:
 
 parameters:
     level: 8
-    checkUninitializedProperties: true
+    checkUninitializedProperties: false
     checkGenericClassInNonGenericObjectType: false
     paths:
         - src

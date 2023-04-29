@@ -15,7 +15,7 @@ use Symfony\Component\Uid\Uuid;
 
 class OutboxMessageHandlerTest extends TestCase
 {
-    public function testThat_HandlesOutboxMessageProperly(): void
+    public function testThatHandlesOutboxMessageProperly(): void
     {
         $outboxMessage = new OutboxMessage(
             Uuid::fromString('7f63d7a0-29c8-43c5-b618-83a9a343130a'),

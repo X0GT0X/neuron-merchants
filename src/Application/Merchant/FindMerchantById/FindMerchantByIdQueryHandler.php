@@ -36,8 +36,7 @@ class FindMerchantByIdQueryHandler extends AbstractCommand
         ';
 
             return $this->connection->fetchOne($sql, MerchantDTO::class, ['id' => $query->merchantId]);
-        }
-        catch (NotFoundException) {
+        } catch (NotFoundException) {
             throw new MerchantNotFoundException(\sprintf('Merchant with id \'%s\' not found', $query->merchantId));
         }
     }

@@ -13,7 +13,7 @@ use PHPUnit\Framework\TestCase;
 
 class DomainEventsAccessorTest extends TestCase
 {
-    public function testThat_ReturnsAllDomainEvents_FromPersistedEntities(): void
+    public function testThatReturnsAllDomainEventsFromPersistedEntities(): void
     {
         $insertedEntityDomainEvent = $this->createStub(DomainEventInterface::class);
         $insertedEntity = $this->createStub(Entity::class);
@@ -55,7 +55,7 @@ class DomainEventsAccessorTest extends TestCase
         $this->assertContains($deletedEntityDomainEvent, $domainEvents);
     }
 
-    public function testThat_ClearsAllDomainEvents_FromPersistedEntities(): void
+    public function testThatClearsAllDomainEventsFromPersistedEntities(): void
     {
         $insertedEntityDomainEvent = $this->createStub(DomainEventInterface::class);
         $insertedEntity = $this->createMock(Entity::class);

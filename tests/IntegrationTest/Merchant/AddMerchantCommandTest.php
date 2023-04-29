@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Tests\IntegrationTest\Merchant;
 
 use App\Application\Configuration\Command\InvalidCommandException;
@@ -31,7 +33,7 @@ class AddMerchantCommandTest extends IntegrationTestCase
         $this->assertTrue($merchant->isActive);
     }
 
-    public function testThat_ThrowsInvalidCommandException_IfRegistrationNumber_DoesNotMatchRegex(): void
+    public function testThatThrowsInvalidCommandExceptionIfRegistrationNumberDoesNotMatchRegex(): void
     {
         $this->expectException(InvalidCommandException::class);
         $this->expectExceptionMessage('Invalid command exception');
@@ -44,7 +46,7 @@ class AddMerchantCommandTest extends IntegrationTestCase
         ));
     }
 
-    public function testThat_ThrowsInvalidCommandException_IfTaxNumber_DoesNotMatchRegex(): void
+    public function testThatThrowsInvalidCommandExceptionIfTaxNumberDoesNotMatchRegex(): void
     {
         $this->expectException(InvalidCommandException::class);
         $this->expectExceptionMessage('Invalid command exception');

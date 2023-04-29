@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Tests\IntegrationTest\Merchant;
 
 use App\Application\Merchant\AddMerchant\AddMerchantCommand;
@@ -10,7 +12,7 @@ use App\Tests\IntegrationTest\IntegrationTestCase;
 
 class GetAllMerchantsQueryTest extends IntegrationTestCase
 {
-    public function testThat_ReturnsAList_OfAllMerchants(): void
+    public function testThatReturnsAListOfAllMerchants(): void
     {
         $this->merchantsModule->executeCommand(new AddMerchantCommand(
             'Name',

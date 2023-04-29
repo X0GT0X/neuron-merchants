@@ -19,7 +19,7 @@ use Symfony\Component\Uid\Uuid;
 
 class DomainEventsDispatcherTest extends TestCase
 {
-    public function testThat_DispatchesDomainEvents_AndAddsNotificationsToOutbox(): void
+    public function testThatDispatchesDomainEventsAndAddsNotificationsToOutbox(): void
     {
         $domainEvent = $this->createStub(DomainEventInterface::class);
         $domainEvent->method('getId')->willReturn(Uuid::fromString('7f63d7a0-29c8-43c5-b618-83a9a343130a'));

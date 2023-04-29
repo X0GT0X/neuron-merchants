@@ -13,7 +13,7 @@ use Symfony\Component\Serializer\SerializerInterface;
 
 class IntegrationEventHandlerTest extends TestCase
 {
-    public function testThat_AddsEventToInbox(): void
+    public function testThatAddsEventToInbox(): void
     {
         $event = $this->createStub(IntegrationEvent::class);
 

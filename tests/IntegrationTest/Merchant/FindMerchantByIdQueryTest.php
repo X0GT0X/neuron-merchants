@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Tests\IntegrationTest\Merchant;
 
 use App\Application\Merchant\AddMerchant\AddMerchantCommand;
@@ -32,7 +34,7 @@ class FindMerchantByIdQueryTest extends IntegrationTestCase
         $this->assertTrue($merchant->isActive);
     }
 
-    public function testThat_ThrowsNotFoundException_IfMerchantNotFound(): void
+    public function testThatThrowsNotFoundExceptionIfMerchantNotFound(): void
     {
         $this->expectException(MerchantNotFoundException::class);
         $this->expectExceptionMessage('Merchant with id \'ec6e6c27-06f7-4741-a4ff-137d1d02ed9c\' not found');
