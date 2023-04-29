@@ -13,7 +13,7 @@ use Symfony\Component\Uid\Uuid;
 
 class InboxTest extends TestCase
 {
-    public function testThatDispatchesMessageWithInboxBus(): void
+    public function testThat_DispatchesMessageWith_InboxBus(): void
     {
         $inboxMessage = new InboxMessage(
             Uuid::fromString('7f63d7a0-29c8-43c5-b618-83a9a343130a'),

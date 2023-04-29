@@ -42,7 +42,7 @@ final readonly class MerchantController
     #[Route('/merchants', methods: ['GET'])]
     public function getAll(): JsonResponse
     {
-        $merchants = $this->merchantsModule->executeCQuery(new GetAllMerchantsQuery());
+        $merchants = $this->merchantsModule->executeQuery(new GetAllMerchantsQuery());
 
         return new JsonResponse($this->serializer->serialize($merchants, 'json'), json: true);
     }
@@ -50,7 +50,7 @@ final readonly class MerchantController
     #[Route('/merchants/{merchantId}', methods: ['GET'])]
     public function findById(Uuid $merchantId): JsonResponse
     {
-        $merchant = $this->merchantsModule->executeCQuery(new FindMerchantByIdQuery($merchantId));
+        $merchant = $this->merchantsModule->executeQuery(new FindMerchantByIdQuery($merchantId));
 
         return new JsonResponse($this->serializer->serialize($merchant, 'json'), json: true);
     }

@@ -8,6 +8,7 @@ use App\Application\Configuration\Connection\ConnectionInterface;
 use App\Application\Configuration\Connection\DTOTransformingException;
 use App\Application\Configuration\Connection\NotFoundException;
 use App\Application\Contract\AbstractCommand;
+use App\Domain\Merchant\Exception\MerchantNotFoundException;
 use Symfony\Component\Messenger\Attribute\AsMessageHandler;
 
 #[AsMessageHandler]
@@ -22,17 +23,22 @@ class FindMerchantByIdQueryHandler extends AbstractCommand
     /**
      * @throws DTOTransformingException
      * @throws \Doctrine\DBAL\Exception
-     * @throws NotFoundException
+     * @throws MerchantNotFoundException
      */
     public function __invoke(FindMerchantByIdQuery $query): MerchantDTO
     {
-        $sql = '
+        try {
+            $sql = '
             SELECT id, name, country, registration_number,
                    tax_number, is_active
             FROM merchants m
             WHERE m.id = :id
         ';
 
-        return $this->connection->fetchOne($sql, MerchantDTO::class, ['id' => $query->merchantId]);
+            return $this->connection->fetchOne($sql, MerchantDTO::class, ['id' => $query->merchantId]);
+        }
+        catch (NotFoundException) {
+            throw new MerchantNotFoundException(\sprintf('Merchant with id \'%s\' not found', $query->merchantId));
+        }
     }
 }

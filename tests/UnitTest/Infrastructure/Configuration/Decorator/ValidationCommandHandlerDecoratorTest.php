@@ -16,7 +16,7 @@ use Symfony\Component\Validator\Validator\ValidatorInterface;
 
 class ValidationCommandHandlerDecoratorTest extends UnitTestCase
 {
-    public function testThatValidatesCommandAndReturnsResult(): void
+    public function testThat_ValidatesCommand_AndReturnsResult(): void
     {
         $command = $this->createStub(CommandInterface::class);
 
@@ -41,7 +41,7 @@ class ValidationCommandHandlerDecoratorTest extends UnitTestCase
         $this->assertEquals('result', $result);
     }
 
-    public function testThatThrowsInvalidCommandExceptionIfCommandIsNotValid(): void
+    public function testThat_ThrowsInvalidCommandException_IfCommandIsNotValid(): void
     {
         $command = $this->createStub(CommandInterface::class);
 

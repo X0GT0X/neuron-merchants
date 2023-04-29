@@ -14,7 +14,7 @@ use App\Tests\UnitTest\UnitTestCase;
 
 class MerchantTest extends UnitTestCase
 {
-    public function testThatSuccessfullyCreatesNewMerchant(): void
+    public function testThat_SuccessfullyCreates_NewMerchant(): void
     {
         $merchantCounter = $this->createMock(MerchantCounterInterface::class);
         $merchantCounter->expects($this->once())
@@ -41,7 +41,7 @@ class MerchantTest extends UnitTestCase
         $this->assertEquals($merchant->id, $domainEvent->merchantId);
     }
 
-    public function testThatCreatingNewMerchantWithNonUniqueRegistrationNumberBreaksRegistrationNumberShouldBeUniqueRule(): void
+    public function testThat_CreatingNewMerchant_WithNonUniqueRegistrationNumber_BreaksRegistrationNumberShouldBeUniqueRule(): void
     {
         $merchantCounter = $this->createMock(MerchantCounterInterface::class);
         $merchantCounter->expects($this->once())
@@ -62,7 +62,7 @@ class MerchantTest extends UnitTestCase
         );
     }
 
-    public function testThatCreatingNewMerchantWithNonUniqueTaxNumberBreaksTaxNumberShouldBeUniqueRule(): void
+    public function testThat_CreatingNewMerchant_WithNonUniqueTaxNumber_BreaksTaxNumberShouldBeUniqueRule(): void
     {
         $merchantCounter = $this->createMock(MerchantCounterInterface::class);
         $merchantCounter->expects($this->once())

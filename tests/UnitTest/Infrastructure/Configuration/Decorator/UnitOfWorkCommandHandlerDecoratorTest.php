@@ -12,7 +12,7 @@ use Neuron\BuildingBlocks\Infrastructure\UnitOfWorkInterface;
 
 class UnitOfWorkCommandHandlerDecoratorTest extends UnitTestCase
 {
-    public function testThatCallsUnitOfWorkCommitAfterInvokingCommand(): void
+    public function testThat_CallsUnitOfWorkCommit_AfterInvokingCommand(): void
     {
         $command = $this->createStub(CommandInterface::class);
 

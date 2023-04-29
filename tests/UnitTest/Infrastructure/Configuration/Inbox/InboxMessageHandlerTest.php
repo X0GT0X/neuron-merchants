@@ -15,7 +15,7 @@ use Symfony\Component\Uid\Uuid;
 
 class InboxMessageHandlerTest extends TestCase
 {
-    public function testThatHandlesInboxMessageProperly(): void
+    public function testThat_HandlesInboxMessageProperly(): void
     {
         $inboxMessage = new InboxMessage(
             Uuid::fromString('7f63d7a0-29c8-43c5-b618-83a9a343130a'),

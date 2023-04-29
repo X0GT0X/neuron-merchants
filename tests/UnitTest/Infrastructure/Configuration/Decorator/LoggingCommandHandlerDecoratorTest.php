@@ -14,7 +14,7 @@ use Psr\Log\LoggerInterface;
 
 class LoggingCommandHandlerDecoratorTest extends UnitTestCase
 {
-    public function testThatLogsCommandStartAndFinish(): void
+    public function testThat_LogsCommandStartAndFinish(): void
     {
         $command = $this->createStub(CommandInterface::class);
 
@@ -41,7 +41,7 @@ class LoggingCommandHandlerDecoratorTest extends UnitTestCase
         $this->assertEquals('result', $result);
     }
 
-    public function testThatLogsCommandFailure(): void
+    public function testThat_LogsCommandFailure(): void
     {
         $command = $this->createStub(CommandInterface::class);
 
@@ -69,7 +69,7 @@ class LoggingCommandHandlerDecoratorTest extends UnitTestCase
         $decorator->__invoke($command);
     }
 
-    public function testThatLogsUnexpectedError(): void
+    public function testThat_LogsUnexpectedError(): void
     {
         $command = $this->createStub(CommandInterface::class);
         $exception = $this->createStub(\Exception::class);

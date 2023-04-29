@@ -15,3 +15,5 @@ parameters:
             message: '#^Property [a-zA-Z0-9\\_]+::\$[a-zA-Z\_]+ is never read, only written.$#'
         -
             message:  '#^Call to an undefined method ReflectionType::.+$#'
+        -
+            message: '#^Property .+ does not accept object\|null.$#'
